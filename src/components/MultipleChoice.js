@@ -35,14 +35,11 @@ class MultipleChoice extends Component {
   }
   render() {
     return (
-      <div className="container">
-        <ul className="list-group">
-          <li className="list-group-item">{this.props.question.content}</li>
-          {this.renderItems()}
-          <li className="btn btn-primary btn-lg" onClick={() => this.submit() }>Submit</li>
-        </ul>
-
-      </div>
+      <ul className="list-group">
+        <li className="list-group-item">{this.props.question.content}</li>
+        {this.renderItems()}
+        <li className="btn btn-primary btn-lg" onClick={() => this.submit() }>Submit</li>
+      </ul>
     );
   }
 }
