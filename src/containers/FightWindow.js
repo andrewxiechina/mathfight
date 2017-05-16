@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import MultipleChoice from '../components/MultipleChoice';
-import '../styles/FightWindow.css'
+import UserStatus from '../components/UserStatus';
+import '../styles/FightWindow.css';
+
 class FightWindow extends Component {
   constructor(props){
     super(props);
     this.state = {
       me: {
         name: "Andy",
+        scores: [-25, 100, 50, 0, null],
+        avatar: "../img/sumrez.png"
+      },
+      opponent: {
+        name: "Julius",
         scores: [-25, 100, 50, 0, null],
         avatar: "../img/sumrez.png"
       },
@@ -85,20 +92,13 @@ class FightWindow extends Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-3 ">
-            <div className="card fight-window-user" >
-              <img className="card-img-top" src="../img/sumrez.png"/>
-
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item"><h2>Score: 500</h2></li>
-                <li className="list-group-item small text-center">100/100</li>
-                <li className="list-group-item list-group-item-success small text-center">100/100</li>
-                <li className="list-group-item list-group-item-warning small text-center">100/100</li>
-              </ul>
-
-            </div>
+            <UserStatus user={this.state.me}/>
           </div>
           <div className="col-sm-6">
             <MultipleChoice question={this.state.questions[0]} submit={(answer) => {this.handleAnswer(answer)}}/>
+          </div>
+          <div className="col-sm-3 ">
+            <UserStatus user={this.state.opponent}/>
           </div>
         </div>
       </div>
