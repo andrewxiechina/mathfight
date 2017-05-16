@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 class MultipleChoice extends Component {
-  renderItem() {
+  renderItems() {
     const options = this.props.question.options;
     const listItems = options.map((item, key) =>
       <li
-        className={key===this.props.question.optionSelected ? "list-group-item list-group-item-action " + "list-group-item-success" : "list-group-item list-group-item-action "}
+        className={(key===this.props.question.optionSelected ? "list-group-item-success" : "")
+                    + " list-group-item list-group-item-action "}
         key={key}
-        style={console.log(key)}>
+        >
         <a>{item}</a>
       </li>
     );
@@ -20,7 +21,7 @@ class MultipleChoice extends Component {
       <div className="container">
       <div className="list-group-item">{this.props.question.content}</div>
       <ul className="list-group">
-        {this.renderItem()}
+        {this.renderItems()}
       </ul>
       </div>
     );
